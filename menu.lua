@@ -36,9 +36,18 @@ function MenuState:draw()
 	else
 		love.graphics.rectangle("fill", 400, 300, 250, 100)
 	end
-	love.graphics.setColor(0,0,0,255)
+	love.graphics.setColor(255,255,0,self.beattime[2][4])
+	if x>= 50 and x<= 300 and y>=450 and y<=550 then
+		love.graphics.rectangle("line", 50, 450, 250, 100)
+	else
+		love.graphics.rectangle("fill", 50, 450, 250, 100)
+	end
+	love.graphics.setColor(255,255,255,255)
+	f:set(40)
 	love.graphics.printf("BPM Counter",   50, 300, 200, "right")
 	love.graphics.printf("Run the beat", 450, 300, 200, "left")
+	f:set(30)
+	love.graphics.printf("Manual BPM input", 50, 450, 200, "right")
 end
 
 function MenuState:mousepressed(x,y,b)
