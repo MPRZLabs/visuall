@@ -15,7 +15,7 @@ end
 
 function BpmState:draw()
 	local bps = self.taps / self.bpmsum
-	local bpm = bps * 60
+	bpm = bps * 60
 	local colorfactor = 255*self.delta/bps
 	love.graphics.setColor(0,0,0,255)
 	love.graphics.rectangle("fill", 0, 0, 700, 700)

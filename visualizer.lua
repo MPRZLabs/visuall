@@ -1,7 +1,6 @@
 VisualizerState = class('VisualizerState', State)
 
 function VisualizerState:initialize()
-	self.beatd = 60/288
 	self.delta = 0
 	self.mainbeat = {1}
 	self.upbeat = true
@@ -10,16 +9,17 @@ end
 
 function VisualizerState:update(dt)
 	self.delta = self.delta + dt
-	if self.delta > self.beatd then
+	local bps = 60/(2*bpm)
+	if self.delta > bps then
 		self.delta = 0
 		if self.twid ~= nil then
 			tween.stop(self.twid)
 			tween.reset(self.twid)
 		end
 		if self.upbeat then
-			self.twid = tween(self.beatd, self.mainbeat, {-1})
+			self.twid = tween(bps, self.mainbeat, {-1}, "inOutElastic")
 		else
-			self.twid = tween(self.beatd, self.mainbeat, {1})
+			self.twid = tween(bps, self.mainbeat, {1}, "linear")
 		end
 		self.upbeat = not self.upbeat
 	end
