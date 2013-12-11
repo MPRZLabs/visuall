@@ -1,5 +1,5 @@
 function love.conf(t)
-	t.title = "Visualiti"
+	t.title = "Visuall"
 	t.author = "Michcioperz"
 	t.console = true
 	t.version = "0.8.0"
