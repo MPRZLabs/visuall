@@ -1,5 +1,6 @@
 tween = require 'tween.tween'
 class = require 'middleclass.middleclass'
+f = require 'font'
 require 'state'
 require 'menu'
 require 'bpmcnt'

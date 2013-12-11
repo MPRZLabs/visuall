@@ -17,6 +17,15 @@ function MenuState:update(dt)
 end
 
 function MenuState:draw()
-	love.graphics.setColor(255,255,255,255)
+	love.graphics.setColor(0,0,0,255)
 	love.graphics.rectangle("fill", 0, 0, 700, 700)
+	love.graphics.setColor(255,255,255,255)
+	f:set(40)
+	love.graphics.setColor(0,255,0,MenuState.beattime[2][4])
+	love.graphics.printf("Visuall", 50, 50, 600, "center")
+	f:set(20)
+	love.graphics.setColor(255,0,0,MenuState.beattime[2][4])
+	love.graphics.printf("BPM Counter", 50, 300, 250, "right")
+	love.graphics.setColor(0,0,255,MenuState.beattime[2][4])
+	love.graphics.printf("Run the beat", 400, 300, 250, "left")
 end
