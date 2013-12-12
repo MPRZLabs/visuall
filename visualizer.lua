@@ -10,6 +10,7 @@ function VisualizerState:initialize()
 	self.bgcolor = self.bgcolordef
 	self.maintaps = 0
 	self:rndBg()
+	self:rndCl()
 end
 
 function VisualizerState:update(dt)
@@ -19,7 +20,7 @@ end
 function VisualizerState:draw()
 	love.graphics.setColor(self.bgcolor)
 	love.graphics.rectangle("fill",0,0,700,700)
-	love.graphics.setBlendMode("multiplicative")
+	love.graphics.setBlendMode("premultiplied")
 	love.graphics.setColor(self.color[1], self.color[2], self.color[3], self.color[4])
 	love.graphics.circle("fill", 350, 350, 150+20*self.mainbeat[1], 6 + self.maintaps)
 	love.graphics.setColor(self.color[2], self.color[3], self.color[1], self.color[4])
