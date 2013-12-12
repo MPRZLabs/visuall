@@ -13,6 +13,8 @@ function VisualizerState:initialize()
 	self.maintaps = 0
 	self:rndBg()
 	self:rndCl()
+	self.autobeat = false
+	self.autotimer = 0
 	self.melodytwid['a'] = tween(60/bpm, self.melodystatus, {a = 0})
 	self.melodytwid['b'] = tween(60/bpm, self.melodystatus, {b = 0})
 	self.melodytwid['c'] = tween(60/bpm, self.melodystatus, {c = 0})
@@ -27,6 +29,13 @@ end
 
 function VisualizerState:update(dt)
 	self.delta = self.delta + dt
+	if self.autobeat then
+		self.autotimer = self.autotimer + dt
+		if self.autotimer > 60/bpm then
+			self.autotimer = self.autotimer - 60/bpm
+			self:keypressed("f", 102)
+		end
+	end		
 end
 
 function VisualizerState:draw()
@@ -144,6 +153,12 @@ function VisualizerState:keypressed(key, unicode)
 		tween.reset(self.melodytwid['g'])
 		tween(60/bpm/4, self.melodystatus, {g = 1})
 	end
+	if key == "a" then
+		self.autobeat = not self.autobeat
+		self.autotimer = 0
+	end
+end
+
 function VisualizerState:keyreleased(key, unicode)
 	if key == "1" then
 		tween.stop(self.melodytwid['a'])
