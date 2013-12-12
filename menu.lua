@@ -2,7 +2,7 @@ MenuState = class('MenuState', State)
 
 function MenuState:initialize()
 	self.beattime = {0,{255,255,255,255}}
-	bpm = 144
+	bpm = 168
 end
 
 function MenuState:update(dt)
@@ -14,7 +14,6 @@ function MenuState:update(dt)
 	else
 		self.beattime[2][4] = 255-self.beattime[1]*255
 	end
-	print(self.beattime[2][4])
 end
 
 function MenuState:draw()
